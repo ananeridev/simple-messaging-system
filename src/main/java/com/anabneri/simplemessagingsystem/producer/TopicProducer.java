@@ -3,23 +3,21 @@ package com.anabneri.simplemessagingsystem.producer;
 import com.anabneri.simplemessagingsystem.model.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.beans.factory.annotation.Value;
-
 
 @Service
-public class QueueProducer {
+public class TopicProducer {
 
-    @Value("${spring.activemq.queue.message}")
-    private String queue;
+    @Value("${spring.activemq.topic.message}")
+    private String topic;
 
     @Autowired
-    @Qualifier("jmsTemplateQueue")
-    private JmsTemplate jmsTemplate;
+    @Qualifier("jmsTemplateTopic")
+    private JmsTemplate jmsTemplateTopic;
 
     public void publish(Message message) {
-        this.jmsTemplate.convertAndSend(queue , message);
-        this.jmsTemplate.convertAndSend("queue.filter", message);
+        this.jmsTemplateTopic.convertAndSend(this.topic, message);
     }
 }
