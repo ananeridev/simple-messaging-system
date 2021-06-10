@@ -34,6 +34,6 @@ public class ConversationMessagingService {
         } catch (Exception e) {
             return new Status("ERROR", "Message not processed");
         }
-        return new Status("Waiting client confirmation", "You message order was solicited to provider")
+        return new Status("Waiting client confirmation", "You message order was solicited to provider");
     }
 }
