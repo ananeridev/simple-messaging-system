@@ -1,4 +1,4 @@
-# simple-messagind-system
+# simple-messaging-system
 
 I'm relying on the messaging architecture and using the JMS exemplified below
 
