@@ -1,6 +1,6 @@
 package com.anabneri.simplemessagingsystem.service;
 
-import com.anabneri.simplemessagingsystem.model.Message;
+import com.anabneri.simplemessagingsystem.model.Messaging;
 import com.anabneri.simplemessagingsystem.model.Status;
 import com.anabneri.simplemessagingsystem.producer.QueueProducer;
 import com.anabneri.simplemessagingsystem.producer.TopicProducer;
@@ -16,10 +16,10 @@ public class ConversationMessagingService {
     @Autowired
     TopicProducer topicProducer;
 
-    public Status queueMessagingInclude(Message message) {
+    public Status queueMessagingInclude(Messaging messaging) {
 
         try {
-            queueProducer.publish(message);
+            queueProducer.publish(messaging);
         } catch (Exception e) {
             return new Status("ERROR","Message not processed");
         }
@@ -27,10 +27,10 @@ public class ConversationMessagingService {
         return new Status("Waiting client confirmation", "You message order was solicited to provider");
     }
 
-    public Status topicMessageInclude(Message message) {
+    public Status topicMessageInclude(Messaging messaging) {
 
         try {
-            topicProducer.publish(message);
+            topicProducer.publish(messaging);
         } catch (Exception e) {
             return new Status("ERROR", "Message not processed");
         }

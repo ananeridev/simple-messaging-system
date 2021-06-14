@@ -7,7 +7,7 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Component;
-import com.anabneri.simplemessagingsystem.model.Message;
+import com.anabneri.simplemessagingsystem.model.Messaging;
 
 import javax.jms.JMSException;
 import javax.jms.TextMessage;
@@ -31,24 +31,24 @@ public class TopicConsumer {
         containerFactory = "jmsFactoryTopic",
         selector = "visualized = false",
         subscription = "consumer1")
-    public void consumingMessageTopicWithSelector(Message message) {
-        System.out.println("SELECTOR TOPIC ------->"+ message.toString());
+    public void consumingMessageTopicWithSelector(Messaging messaging) {
+        System.out.println("SELECTOR TOPIC ------->"+ messaging.toString());
     }
 
     @JmsListener(destination = "topic.message",
         containerFactory = "jmsFactoryTopic",
         subscription = "consumer2")
     @SendTo("${spring.activemq.topic.transformacao}")
-    public Message consumingMessageTopicAndSendToAnother(Message message) {
-        System.out.println("REDIRECT TOPIC"+ message.toString());
+    public Messaging consumingMessageTopicAndSendToAnother(Messaging messaging) {
+        System.out.println("REDIRECT TOPIC"+ messaging.toString());
 
-        return message;
+        return messaging;
     }
 
     @JmsListener(destination = "topic.transformation",
         containerFactory = "jmsFactoryTopic",
         subscription = "consumer1")
-    public void consumingMessageTopicTransformation(Message message) {
-        System.out.println("TOPIC transformation"+ message.toString());
+    public void consumingMessageTopicTransformation(Messaging messaging) {
+        System.out.println("TOPIC transformation"+ messaging.toString());
     }
 }

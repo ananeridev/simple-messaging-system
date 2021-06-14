@@ -1,6 +1,6 @@
 package com.anabneri.simplemessagingsystem.producer;
 
-import com.anabneri.simplemessagingsystem.model.Message;
+import com.anabneri.simplemessagingsystem.model.Messaging;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,7 +17,7 @@ public class TopicProducer {
     @Qualifier("jmsTemplateTopic")
     private JmsTemplate jmsTemplateTopic;
 
-    public void publish(Message message) {
-        this.jmsTemplateTopic.convertAndSend(this.topic, message);
+    public void publish(Messaging messaging) {
+        this.jmsTemplateTopic.convertAndSend(this.topic, messaging);
     }
 }

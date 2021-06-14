@@ -1,6 +1,6 @@
 package com.anabneri.simplemessagingsystem.producer;
 
-import com.anabneri.simplemessagingsystem.model.Message;
+import com.anabneri.simplemessagingsystem.model.Messaging;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jms.core.JmsTemplate;
@@ -18,8 +18,8 @@ public class QueueProducer {
     @Qualifier("jmsTemplateQueue")
     private JmsTemplate jmsTemplate;
 
-    public void publish(Message message) {
-        this.jmsTemplate.convertAndSend(queue , message);
-        this.jmsTemplate.convertAndSend("queue.filter", message);
+    public void publish(Messaging messaging) {
+        this.jmsTemplate.convertAndSend(queue , messaging);
+        this.jmsTemplate.convertAndSend("queue.filter", messaging);
     }
 }
