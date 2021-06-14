@@ -1,19 +1,30 @@
 package com.anabneri.simplemessagingsystem.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode
 public class Status {
 
-    private String status;
-    private String message;
+   private  String status;
+   private  String message;
+
+    public Status(final String status, final String message) {
+        this.status = status;
+        this.message = message;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(final String status) {
+        this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(final String message) {
+        this.message = message;
+    }
 
 }
