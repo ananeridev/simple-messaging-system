@@ -8,10 +8,8 @@ import javax.jms.TextMessage;
 import org.springframework.jms.support.converter.MessageConversionException;
 import org.springframework.jms.support.converter.MessageConverter;
 
-import com.anabneri.simplemessagingsystem.model.Messaging
+import com.anabneri.simplemessagingsystem.model.Messaging;
 import com.google.gson.Gson;
-
-
 
 
 public class MessagingConverter implements MessageConverter {
@@ -39,7 +37,7 @@ public class MessagingConverter implements MessageConverter {
 
         String json = textMessage.getText();
 
-        Messaging messaging = new Gson().fromJson(json,Messa.class);
+        Messaging messaging = new Gson().fromJson(json,Messaging.class);
 
         System.out.println("left the conversation");
 
